@@ -76,7 +76,6 @@
         result = index;
       }
     });
-
     return result;
   };
 
@@ -90,7 +89,6 @@
         trueElements.push(element);
       }
     });
-    
     return trueElements;  
   };
   
@@ -105,11 +103,11 @@
         falseElements.push(element); 
       }
     });
-    
     return falseElements;
   };
 
   // Produce a duplicate-free version of the array.
+  
   _.uniq = function(array) {
    var uniqueValues = [];  
    
@@ -177,23 +175,20 @@
   
   
   _.reduce = function(collection, iterator, accumulator) {
-    //for loop to access collection[i]
-    //apply iterator(collection[i])
-    //if accumulator exists, add to accumulator
-      //else start from collection[0]
-    var total;
-    
-    for (var i = 0; i < collection.length; i++) {
-     if (typeof accumulator !== 'number') {
-       accumulator = collection[i]; 
-       accumulator += iterator(collection[i]); 
-     } else {
-      accumulator += iterator(collection[i]);
-     }
+     
+    if (accumulator !== undefined) {
+      for (var i = 0; i < collection.length; i++) {
+        accumulator = iterator(accumulator, collection[i]); 
+      }
+    } else {
+      accumulator = collection[0]; 
+      for (var i = 1; i < collection.length; i++) {
+        if (iterator(accumulator, collection[i]) !== undefined) {
+          accumulator = iterator(accumulator, collection[i]); 
+        }
+      }
     }
-    
     return accumulator; 
-      
   };
 
   // Determine if the array or object contains a given value (using `===`).
