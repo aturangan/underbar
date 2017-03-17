@@ -75,8 +75,7 @@
       if (item === target && result === -1) {
         result = index;
       }
-    });
-    
+    }); 
     return result;
   };
 
@@ -90,7 +89,6 @@
         trueElements.push(element);
       }
     });
-    
     return trueElements;  
   };
   
@@ -105,15 +103,14 @@
         falseElements.push(element); 
       }
     });
-    
     return falseElements;
   };
 
   // Produce a duplicate-free version of the array.
   
   _.uniq = function(array) {
-   var uniqueValues = [];  
    
+   var uniqueValues = [];  
    uniqueValues.push(array[0]);
     
    for (var i = 1; i < array.length; i++) {
@@ -121,7 +118,6 @@
        uniqueValues.push(array[i]); 
       }
     }
-    
    return uniqueValues; 
 };
 
@@ -135,8 +131,7 @@
     
     for (var i = 0; i < collection.length; i++) {
       results.push(iterator(collection[i])); 
-    }
-    
+    }  
     return results; 
   };
 
@@ -216,16 +211,13 @@
     return _.reduce(collection, function(isTrue, item) {
     
  	  if (typeof iterator === 'function') {
- 	  
         if (!isTrue || !iterator(item)) {
           return false;
         }  
-        return true;  
-        
+        return true;   
       } else {
         return item;
-      }
-      
+      }    
     }, true);  
   };
   
@@ -276,7 +268,6 @@
         obj[property] = value;
       });
     }
-      
     return obj; 
   };
   
@@ -295,7 +286,6 @@
         }
       });
     }
-    
     return obj;
   };
 
@@ -349,7 +339,6 @@
      if (!(results.hasOwnProperty(prop))) {
        results[prop] = func.apply(this, arguments); 
      }
-     
      return results[prop]; 
     }
   };
